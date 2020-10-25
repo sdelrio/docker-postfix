@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  mail:
+  - apiVersion: v2
+    appVersion: v2.1.1
+    created: "2020-10-25T17:39:40.880155362Z"
+    description: Helm chart for Postfix mail server
+    digest: 65b86617f8cc581643e7b6530d0f7bff07a46b09c2ad390807b4ede9773a4c80
+    name: mail
+    type: application
+    urls:
+    - https://bokysan.github.io/docker-postfix/mail-v2.1.1.tgz
+    version: v2.1.1
+generated: "2020-10-25T17:39:40.879184549Z"
