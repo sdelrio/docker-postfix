@@ -26,6 +26,7 @@ Simple postfix relay host ("postfix null client") for your Docker containers. Ba
     * [POSTFIX_mynetworks](#postfix_mynetworks)
     * [POSTFIX_message_size_limit](#postfix_message_size_limit)
     * [Overriding specific postfix settings](#overriding-specific-postfix-settings)
+    * [ANON_EMAIL](#anon_email)
   * [DKIM / DomainKeys](#dkim--domainkeys)
     * [Supplying your own DKIM keys](#supplying-your-own-dkim-keys)
     * [Auto-generating the DKIM selectors through the image](#auto-generating-the-dkim-selectors-through-the-image)
@@ -330,6 +331,19 @@ it stuck in the outbound queue indefinitely.
 Any Postfix [configuration option](http://www.postfix.org/postconf.5.html) can be overriden using `POSTFIX_<name>`
 environment variables, e.g. `POSTFIX_allow_mail_to_commands=alias,forward,include`. Specifying no content (empty
 variable) will remove that variable from postfix config.
+
+#### ANON_EMAIL
+
+Anonymize email in Postfix logs. It mask the email content by putting `*` in the middle of the name and the domain. Sample: `from=<a*****************s)@a***********.com>`
+
+The letters allowed to be unmasked can be set using env vars:
+
+* `ANON_EMAIL_PREFIX`: First letters from the username (default 1).
+* `ANON_EMAIL_SUFFIX`: Last letters from the username (default 1).
+* `ANON_DOMAIN_PREFIX`: First letters from the domain to be unmasked (default 1).
+* `ANON_DOMAIN_SUFFIX`: Last letters from the domain, most of the cases you could see `****.com` (default 4).
+
+If the username is too short (`len(username) - ANON_EMAIL_PREFIX - ANON_EMAIL_SUFFIX) < 2`) , all the letters will be masked. 
 
 ### DKIM / DomainKeys
 

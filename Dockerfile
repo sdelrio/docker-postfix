@@ -64,6 +64,7 @@ COPY       /configs/rsyslog*.conf        /etc/
 COPY       /configs/opendkim.conf        /etc/opendkim/opendkim.conf
 COPY       /configs/smtp_header_checks   /etc/postfix/smtp_header_checks
 COPY       /scripts/*.sh                 /
+COPY       /scripts/*.py                 /
 
 RUN        chmod +x /run.sh /opendkim.sh
 
