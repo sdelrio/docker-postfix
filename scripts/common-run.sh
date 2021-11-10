@@ -28,6 +28,28 @@ rsyslog_log_format() {
 	sed -i -E "s/<log-format>/${log_format}/" /etc/rsyslog.conf
 }
 
+anon_email_log() {
+	local anon_email="${ANON_EMAIL}"
+  if [[ $(egrep -ie "(yes|true)" <<<"${anon_email}") ]] ; then
+	  info "Using anonymizer email script"
+	  sed -i -E "s/^#anon_email//g" /etc/rsyslog.conf
+	fi
+
+  if [[ -v  ANON_EMAIL_PREFIX ]]; then
+	  sed -i -E "s/ANON_EMAIL_PREFIX/${ANON_EMAIL_PREFIX}/g" /etc/rsyslog.conf
+  fi
+  if [[ -v  ANON_EMAIL_SUFFIX ]]; then
+	  sed -i -E "s/ANON_EMAIL_SUFFIX/${ANON_EMAIL_SUFFIX}/g" /etc/rsyslog.conf
+  fi
+  if [[ -v  ANON_DOMAIN_PREFIX ]]; then
+	  sed -i -E "s/ANON_DOMAIN_PREFIX/${ANON_DOMAIN_PREFIX}/g" /etc/rsyslog.conf
+  fi
+  if [[ -v  ANON_DOMAIN_SUFFIX ]]; then
+	  sed -i -E "s/ANON_DOMAIN_SUFFIX/${ANON_DOMAIN_SUFFIX}/g" /etc/rsyslog.conf
+  fi
+
+}
+
 setup_conf() {
 	local srcfile
 	local dstfile
