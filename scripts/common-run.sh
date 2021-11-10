@@ -35,16 +35,16 @@ anon_email_log() {
 	  sed -i -E "s/^#anon_email//g" /etc/rsyslog.conf
 	fi
 
-  if [[ -v  ANON_EMAIL_PREFIX ]]; then
+  if [[ -v ANON_EMAIL_PREFIX ]]; then
 	  sed -i -E "s/ANON_EMAIL_PREFIX/${ANON_EMAIL_PREFIX}/g" /etc/rsyslog.conf
   fi
-  if [[ -v  ANON_EMAIL_SUFFIX ]]; then
+  if [[ -v ANON_EMAIL_SUFFIX ]]; then
 	  sed -i -E "s/ANON_EMAIL_SUFFIX/${ANON_EMAIL_SUFFIX}/g" /etc/rsyslog.conf
   fi
-  if [[ -v  ANON_DOMAIN_PREFIX ]]; then
+  if [[ -v ANON_DOMAIN_PREFIX ]]; then
 	  sed -i -E "s/ANON_DOMAIN_PREFIX/${ANON_DOMAIN_PREFIX}/g" /etc/rsyslog.conf
   fi
-  if [[ -v  ANON_DOMAIN_SUFFIX ]]; then
+  if [[ -v ANON_DOMAIN_SUFFIX ]]; then
 	  sed -i -E "s/ANON_DOMAIN_SUFFIX/${ANON_DOMAIN_SUFFIX}/g" /etc/rsyslog.conf
   fi
 
